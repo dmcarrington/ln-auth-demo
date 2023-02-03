@@ -12,6 +12,7 @@ interface LNData {
   encoded: string;
   secret: string;
   url: string;
+  key: string;
 }
 
 interface Props {
@@ -25,7 +26,7 @@ interface IAuthContext {
 
 const defaultState = {
   handleLoginWithLN: () => {},
-  lnData: {encoded: "", secret: "", url: ""}
+  lnData: {encoded: "", secret: "", url: "", key: ""}
 };
 
 export const AuthContext = React.createContext<IAuthContext>(defaultState);
@@ -39,6 +40,9 @@ export const AuthContextProvider = ({ children }: Props) => {
     const getEventsSocket = () => {
       socket.on('auth', (data: any) => {
         if (data.key) {
+          let lndata = lnData
+          lndata.key = data.key
+          setLnData(lndata)
           router.push('/dashboard/');
         }
       });
