@@ -80,4 +80,4 @@ Once the client has started, you should see a `user connected` message in the _s
 
 ## Demo Video
 
-<a href="https://odysee.com/@davidcarrington:3/lnurl-auth-demo:6" target="_blank"><img src="https://user-images.githubusercontent.com/32391650/216657369-8ea06c45-54f3-48ab-8227-627fc94e8114.png"></a>
+<a href="https://odysee.com/@davidcarrington:3/lnurl-auth-demo2:3" target="_blank"><img src="https://user-images.githubusercontent.com/32391650/216657369-8ea06c45-54f3-48ab-8227-627fc94e8114.png"></a>
