@@ -77,3 +77,7 @@ yarn run dev
 ## Usage
 
 Once the client has started, you should see a `user connected` message in the _server_ logs, as the client connects to it over websocket. Click the "log in with lighning button", at which point a QR code should be displayed. Scan this with your lighning wallet, at which point, it should ask you if you want to log in to the domain of your temporary ngrok address. Select "Yes", if authentication is successful, you should be instantly routed to the Dashbaord page.
+
+## Demo Video
+
+<a href="https://odysee.com/@davidcarrington:3/lnurl-auth-demo:6" target="_blank"><img src="https://user-images.githubusercontent.com/32391650/216657369-8ea06c45-54f3-48ab-8227-627fc94e8114.png"></a>
