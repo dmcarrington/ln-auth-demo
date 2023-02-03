@@ -1,4 +1,4 @@
-# ln-auth-nextjs
+# lnurl-auth Demo
 
 An LNURL-auth and NextJS app that demonstrates anonymous authentication with LNURL
 
