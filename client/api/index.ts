@@ -21,3 +21,5 @@ export const loginWithLN = async (): Promise<any> => {
     }
   }
 }
+
+export const pusherKey = process.env.PUSHER_KEY
