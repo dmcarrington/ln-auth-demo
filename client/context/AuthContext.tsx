@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { loginWithLN, pusherKey} from '../api';
+import React, { useState, useEffect } from 'react';
+import { loginWithLN, pusherKey, pusherChannel, pusherCluster} from '../api';
 import { useRouter } from 'next/router';
 
 import Pusher from 'pusher-js';
@@ -35,14 +35,12 @@ export const AuthContextProvider = ({ children }: Props) => {
   useEffect(() => {
     const getEventsSocket = () => {
       const pusher = new Pusher(pusherKey!,{
-        cluster: "eu"
+        cluster: pusherCluster!
       });
       
-      const channel =  pusher.subscribe("lnd-auth")
+      const channel =  pusher.subscribe(pusherChannel!)
       
-      console.log(channel)
       channel.bind("auth", function(data:any) {
-        console.log(data)
         if (data.key) {
           let lndata = lnData
           lndata.key = data.key
@@ -50,14 +48,14 @@ export const AuthContextProvider = ({ children }: Props) => {
           router.push('/dashboard/');
         }
       })
-      //pusher.unsubscribe('lnd-auth')
+
       return (() => {
         pusher.unsubscribe('lnd-auth')
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps
     };
     getEventsSocket()
-  }, [/*router*/]);
+  }, []);
 
   const handleLoginWithLN = async () => {
     let response = await loginWithLN();

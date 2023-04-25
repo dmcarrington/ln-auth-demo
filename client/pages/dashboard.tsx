@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-         <a href="/">Ln-Auth Authenticated!</a> Dashboard
+         <a>Ln-Auth Authenticated!</a> Dashboard
         </h1>
         <b>User:</b> {user}
       </main>

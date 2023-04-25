@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-//import { emitSocketEvent } from '../app';
 import {  responseError } from '../helpers';
 import lnurlServer from '../helpers/lnurl';
 const Pusher = require("pusher");
@@ -24,11 +23,9 @@ const pusher = new Pusher({
 export const pseudoLogin = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
         const query = req.query;
-        console.log(req)
         if (query.key) {
             const key: string = String(query.key);
 
-            //emitSocketEvent.emit('auth', { key });
             pusher.trigger("lnd-auth", "auth", {
                 key
               });
