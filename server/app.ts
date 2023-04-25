@@ -26,7 +26,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
 
 app.use('/', routes);
 
-const io = require('socket.io')(server);
+/*const io = require('socket.io')(server);
 let emitSocketEvent: any;
 
 io.on('connection', (socket: any) => {
@@ -39,6 +39,6 @@ io.on('connection', (socket: any) => {
   emitSocketEvent = socket;
 });
 
-export { emitSocketEvent };
+export { emitSocketEvent };*/
 
 export default server;

@@ -21,3 +21,7 @@ export const loginWithLN = async (): Promise<any> => {
     }
   }
 }
+
+export const pusherKey = process.env.NEXT_PUBLIC_PUSHER_KEY
+export const pusherChannel = process.env.NEXT_PUBLIC_PUSHER_CHANNEL
+export const pusherCluster = process.env.NEXT_PUBLIC_PUSHER_CLUSTER

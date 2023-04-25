@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { loginWithLN } from '../api';
-import { io } from 'socket.io-client';
+import React, { useState, useEffect } from 'react';
+import { loginWithLN, pusherKey, pusherChannel, pusherCluster} from '../api';
 import { useRouter } from 'next/router';
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || '';
-const socket = io(SOCKET_URL, {
-  transports: ['websocket'],
-});
+import Pusher from 'pusher-js';
 
 interface LNData {
   encoded: string;
@@ -34,21 +30,32 @@ export const AuthContext = React.createContext<IAuthContext>(defaultState);
 export const AuthContextProvider = ({ children }: Props) => {
   const [lnData, setLnData] = useState(defaultState.lnData);
 
-   const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     const getEventsSocket = () => {
-      socket.on('auth', (data: any) => {
+      const pusher = new Pusher(pusherKey!,{
+        cluster: pusherCluster!
+      });
+      
+      const channel =  pusher.subscribe(pusherChannel!)
+      
+      channel.bind("auth", function(data:any) {
         if (data.key) {
           let lndata = lnData
           lndata.key = data.key
           setLnData(lndata)
           router.push('/dashboard/');
         }
-      });
+      })
+
+      return (() => {
+        pusher.unsubscribe('lnd-auth')
+      })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     };
     getEventsSocket()
-  }, [router]);
+  }, []);
 
   const handleLoginWithLN = async () => {
     let response = await loginWithLN();
