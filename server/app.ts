@@ -26,19 +26,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
 
 app.use('/', routes);
 
-/*const io = require('socket.io')(server);
-let emitSocketEvent: any;
-
-io.on('connection', (socket: any) => {
-  console.log('a user connected');
-
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-
-  emitSocketEvent = socket;
-});
-
-export { emitSocketEvent };*/
-
 export default server;
