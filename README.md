@@ -74,6 +74,10 @@ To display the client application run
 yarn run dev
 ```
 
+## Running via Docker
+
+As an alternative to building and running the client and service individually, you can run these via Docker. In the root of the project, simply run `docker_compose up`, and wait for it to build and start the `ln-auth-service` and `ln-auth-ui` containers. Once ready, the UI can be accessed at `http://localhost:3000`.
+
 ## Usage
 
 Once the client has started, you should see a `user connected` message in the _server_ logs, as the client connects to it over websocket. Click the "log in with lighning button", at which point a QR code should be displayed. Scan this with your lighning wallet, at which point, it should ask you if you want to log in to the domain of your temporary ngrok address. Select "Yes", if authentication is successful, you should be instantly routed to the Dashbaord page.

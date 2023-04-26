@@ -1,0 +1,19 @@
+version: "2.2"
+
+services:
+  ln-auth-service:
+    container_name: ln-auth-service
+    build: server
+    env_file:
+      - server/.env
+    ports:
+      - 5001:5001
+      
+  ln-auth-ui:
+    container_name: ln-auth-ui
+    build: client
+    env_file:
+      - client/.env
+    ports:
+      - 3000:3000
+

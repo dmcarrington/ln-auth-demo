@@ -8,12 +8,13 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
+RUN yarn install
 # If you are building your code for production
 # RUN npm ci --omit=dev
 
 # Bundle app source
 COPY . .
 
-EXPOSE 5001
-CMD [ "npm", "run", "start" ]
+EXPOSE 3000
+
+CMD [ "yarn", "run", "dev" ]
