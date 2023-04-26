@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "ln-auth-demo",
+    "builds": [
+      { "src": "script.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.ts" }
+    ]
+  }
